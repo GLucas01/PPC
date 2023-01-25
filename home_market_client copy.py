@@ -8,7 +8,7 @@ def user():
     return answer
 
 HOST = "localhost"
-PORT = 1600
+PORT = 1604
 remainings=12000
 print("1. to buy energy")
 print("2. to sell energy")
@@ -21,15 +21,13 @@ while True:
         
         m = user()
         if m == 1:
-            client_socket.send(b"1")
             while True:
                 try:
                     buy_amount=int(input("How much do you want to buy : "))
                     break
                 except ValueError:
                     print("Oops? That was not a valid integer")
-            
-            client_socket.send(str(buy_amount).encode())
+            client_socket.send(("1+"+str(buy_amount)).encode())
             resp = client_socket.recv(1024)
             #print(resp)
             if not len(resp):
@@ -45,15 +43,13 @@ while True:
                 print("Server response:", response[0])
                 
         if m == 2:
-            client_socket.send(b"2")
             while True:
                 try:
                     sell_amount=int(input("How much do you want to sell : "))
                     break
                 except ValueError:
                     print("Oops? That was not a valid integer")
-            
-            client_socket.send(str(sell_amount).encode())
+            client_socket.send(("2+"+str(sell_amount)).encode())
             resp = client_socket.recv(1024)
             
             if not len(resp):
@@ -69,11 +65,11 @@ while True:
                 print("Server response:", response[0])
         if m == 3:
             print("Terminate server")
-            client_socket.send(b"3")
+            client_socket.send(("3").encode())
             break
         if m == 4:
             print("Terminate program")
-            client_socket.send(b"4")
+            client_socket.send(("4").encode())
             break
             
     
