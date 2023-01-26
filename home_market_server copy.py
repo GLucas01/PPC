@@ -40,12 +40,12 @@ def handle_client(client_socket):
         client_socket.send(message.encode())
         ok=True
     if str(m[0]) == "3":
-        print("Terminating server!")
-        serve = False
-        ok=True
-    if str(m[0]) == "4":
         print("Terminating client")
         ok=True
+    if str(m[0]) == "4":
+        print("Terminating server!")
+        ok=True
+        serve = False
         #client_socket.close()
 
 
