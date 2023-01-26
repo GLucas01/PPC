@@ -11,7 +11,7 @@ def user():
     return answer
 
 HOST = "localhost"
-PORT = 1604
+PORT = 9695
 remainings=12000
 
 #print("3. to terminate server")
@@ -38,17 +38,30 @@ while True:
             response=resp.decode()
             response=response.split("+")
             if response[0]=="OK":
-                print("You bought "+str(response[1])+" from market.")
-                remainings=remainings+int(response[1])
-                print("Remainings : "+str(remainings))
-            else:
-                print("Server response:", response[0])
+                if response[1]=="N/A":
+                    print("Server response:", response[2])
+                else:
+                    print("You bought "+str(response[1])+" from market.")
+                    remainings=remainings+int(response[1])
+                    print("Remainings : "+str(remainings))
+            elif response[0]=="KO":
+                if response[1]=="N/A":
+                    print("Server response:", response[2])
+                else:
+                    print("You bought "+str(response[1])+" from market.")
+                    remainings=remainings+int(response[1])
+                    print("Remainings : "+str(remainings))
+                break
+                
                 
         if m == 2:
             while True:
                 try:
                     sell_amount=int(input("How much do you want to sell : "))
-                    break
+                    if sell_amount>remainings:
+                        print("Sorry. Not enough energy to sell. You can only sell energy less than "+str(remainings))
+                    else:
+                        break
                 except ValueError:
                     print("Oops? That was not a valid integer")
             client_socket.send(("2+"+str(sell_amount)).encode())
@@ -63,8 +76,15 @@ while True:
                 print("You sold "+str(response[1])+" to market.")
                 remainings=remainings-int(response[1])
                 print("Remainings : "+str(remainings))
-            else:
-                print("Server response:", response[0])
+                            
+            elif response[0]=="KO":
+                print("You sold "+str(response[1])+" to market.")
+                remainings=remainings-int(response[1])
+                print("Remainings : "+str(remainings))
+                break
+            
+            
+            
         #if m == 3:
         #    print("Terminate server")
         #    client_socket.send(("3").encode())
