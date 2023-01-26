@@ -4,8 +4,9 @@ import socket
 def user():
     print("1. to buy energy")
     print("2. to sell energy")
+    print("3. to terminate program")
     answer = 5
-    while answer not in [1, 2, 3, 4]:
+    while answer not in [1, 2, 3]:
         answer = int(input())
     return answer
 
@@ -64,13 +65,13 @@ while True:
                 print("Remainings : "+str(remainings))
             else:
                 print("Server response:", response[0])
+        #if m == 3:
+        #    print("Terminate server")
+        #    client_socket.send(("3").encode())
+        #    break
         if m == 3:
-            print("Terminate server")
-            client_socket.send(("3").encode())
-            break
-        if m == 4:
             print("Terminate program")
-            client_socket.send(("4").encode())
+            client_socket.send(("3").encode())
             break
             
     
