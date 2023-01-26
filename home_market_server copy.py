@@ -19,13 +19,17 @@ def handle_client(client_socket):
     m = request.decode()
     m = m.split("+")
     if str(m[0]) == "1":
-        print("Sold " + str(m[1]))
-        #print(add + " bought " + str(m[1]))
-        market_amount=market_amount-int(m[1])
-        print("Remainings : "+str(market_amount))
-        #print(m)
-        message="OK+"+str(m[1])
-        client_socket.send(message.encode())
+        if market_amount<int(m[1]):
+            message="Market not enoough "+str(int(m[1]))+" for sale. Sorry"
+            client_socket.send(message.encode())
+        else:
+            print("Sold " + str(m[1]))
+            #print(add + " bought " + str(m[1]))
+            market_amount=market_amount-int(m[1])
+            print("Remainings : "+str(market_amount))
+            #print(m)
+            message="OK+"+str(m[1])
+            client_socket.send(message.encode())
         ok=True
     if str(m[0]) == "2":
         print("Bought " + str(m[1]))
