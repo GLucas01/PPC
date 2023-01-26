@@ -2,6 +2,8 @@ import sys
 import socket
 
 def user():
+    print("1. to buy energy")
+    print("2. to sell energy")
     answer = 5
     while answer not in [1, 2, 3, 4]:
         answer = int(input())
@@ -10,8 +12,7 @@ def user():
 HOST = "localhost"
 PORT = 1604
 remainings=12000
-print("1. to buy energy")
-print("2. to sell energy")
+
 #print("3. to terminate server")
 #print("4. to terminate client")
 
