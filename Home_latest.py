@@ -17,15 +17,15 @@ ok=True #variable to wait for a transaction to complete
 #------------------------------------------------------------------------
 #function for the user interface menu
 def user():
-    print("1. to hear request from neighbour")
-    print("2. to request energy from neighbour")
-    print("3. to buy energy")
-    print("4. to sell energy")
-    print("5. to terminate program")
-    answer=6
-    while answer not in [1, 2, 3, 4, 5]:
-        answer = int(input())
-        return answer
+    answer="test"
+    while answer not in ["1", "2", "3", "4", "5"]:
+        print("1. to hear request from neighbour")
+        print("2. to request energy from neighbour")
+        print("3. to buy energy")
+        print("4. to sell energy")
+        print("5. to terminate program")
+        answer = str(input())
+    return answer
 
 #------------------------------------------------------------------------
 #home-home communication serve function
@@ -86,7 +86,8 @@ while True:
     if ok == True :
         print("You have "+str(remainings)+" remainings")
         ok=False
-        t = user()
+        t = int(user())
+        
         if t == 1:
             if __name__ == "__main__":
                 try:
