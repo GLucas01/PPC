@@ -29,16 +29,11 @@ python3 Home4.py
 4. to sell energy
 5. to terminate program
 ```
-i **to hear request from neighbour**
-  + Become a message queue server and waiting connection from other home process to giveaway the energy.     
-ii. **to request energy from neighbour**
-  + Connect to a message queue server using a key and asking for an amount of energy.      
-iii. **to buy energy**
-  + Home user can connect to the market process using socket to buy an amount of energy.      
-iv. **to sell energy**
-  + Home user can connect to the market process using socket to sell an amount of energy.      
-v. **to terminate program**
-  + Home user ends the program.      
+ + **to hear request from neighbour** : Become a message queue server and waiting connection from other home process to giveaway the energy.     
+ + **to request energy from neighbour** : Connect to a message queue server using a key and asking for an amount of energy.      
+ + **to buy energy** : Home user can connect to the market process using socket to buy an amount of energy.      
+ + **to sell energy** : Home user can connect to the market process using socket to sell an amount of energy.      
+ + **to terminate program** : Home user ends the program.      
   
 We can run multiple home programs, but only a maximum of three can transact with the market program simultaneously. There is no limit on communication between the home programs.
 
