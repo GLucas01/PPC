@@ -30,8 +30,8 @@ python3 Home4.py
 5. to terminate program
 ```
   -**to hear request from neighbour**
-   - Become a message queue server and waiting connection from other home process to giveaway the energy \n
-  -**to request energy from neighbour**
+   - Become a message queue server and waiting connection from other home process to giveaway the energy
+ -**to request energy from neighbour**
    - Connect to a message queue server using a key and asking for an amount of energy
   -**to buy energy**
    - Home user can connect to the market process using socket to buy an amount of energy
