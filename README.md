@@ -20,6 +20,32 @@ python3 Home4.py
 ```
 
 --PLAY WITH THE PROGRAM--
-1. Now you should have 
- In our project, run the market program first before starting any home program. This will ensure an automated socket connection for communication once the home program starts. If the market program is not running, the home program will not be able to find the socket with the defined port number. Next, we can run multiple home programs, but only a maximum of three can transact with the market program simultaneously. There is no limit on communication between the home programs. In addition to the four main functionalities introduced in the home process menu (Donating energy, Requesting energy, Purchasing energy, Selling energy), we added a fifth option to shut down the home program properly. Lastly, to properly shut down the market process, we created a third program named "kill_market" that sends a command via the socket to terminate the market program.
+1. Now you should have 5 windows opened
+2. You will have 5 choices for each home process
+```
+1. to hear request from neighbour
+2. to request energy from neighbour
+3. to buy energy
+4. to sell energy
+5. to terminate program
+```
+  -**to hear request from neighbour**
+   - Become a message queue server and waiting connection from other home process to giveaway the energy
+  -**to request energy from neighbour**
+   - Connect to a message queue server using a key and asking for an amount of energy
+  -**to buy energy**
+   - Home user can connect to the market process using socket to buy an amount of energy
+  -**to sell energy**
+   - Home user can connect to the market process using socket to sell an amount of energy
+  -**to terminate program**
+   - Home user ends the program 
+  
+We can run multiple home programs, but only a maximum of three can transact with the market program simultaneously. There is no limit on communication between the home programs.
+
+--END THE PROGRAM--
+1. Execute the kill_market program
+```
+python3 kill_market.py
+```
+The program sends a command via the socket to terminate the market program.
 
